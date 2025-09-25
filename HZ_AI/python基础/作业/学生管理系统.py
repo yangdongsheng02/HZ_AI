@@ -5,18 +5,28 @@ def print_info():
     print('4. 查询单个学生信息')
     print('5. 查询所有的学生信息')
     print('6. 退出系统')
-
+    print('-'*30)
 students = [] #学生列表
 
 #添加学生
 def add_student():
     id = int(input('输入学号'))
-    if id in students:
-        print('学号已存在')
-    name = input('输入学生名字')
-    age = int(input('输入年龄'))
-    stu_dict = {'id': id, 'name': name, 'age': age}
-    students.append(stu_dict)
+    # if id in students:
+    #     print('学号已存在')
+    # name = input('输入学生名字')
+    # # age = int(input('输入年龄'))
+    # stu_dict = {'id': id, 'name': name, 'age': age}
+    # students.append(stu_dict)
+    for stu in students:
+        if stu['id'] == id:
+            print('已存在')
+            break    #如果不break每次调用都会在for循环执行完之后进行else时再添加一次学号已存在的
+    else:
+        name = input('输入名字')
+        age = int(input('输入年龄'))
+        stu_dict = {'id': id, 'name': name, 'age': age}
+        students.append(stu_dict)
+        print('添加成功')
 
 #删除学生
 def del_student():
@@ -34,13 +44,10 @@ def update_student():
     i = int(input("输入要修改的学生学号"))
     for stu in students:
         if stu['id'] == i:
-            new_id = int('输入学号')
-            new_name=int(input("名字"))
-            new_age = int(input("输入年龄"))
-            stu['age'] = new_age
-            stu['id'] = new_id
-            stu['name'] = new_name
+            stu['age'] = int(input("输入年龄"))
+            stu['name'] = int(input("名字"))
             print('修改完成')
+            break
     else:
         print('学号不存在')
 
@@ -54,7 +61,7 @@ def select_student():
     else:
         print('学号不存在')
 
- #展示所以学生
+ #展示所有学生
 def show_student():
     for stu in students:
         print(stu)
@@ -77,4 +84,3 @@ while True:
         break
     else:
         print("请输入对应数字")
-    print()

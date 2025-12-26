@@ -1,4 +1,3 @@
-# 安装必要的库
 # transformers: Hugging Face的Transformer库，包含BERT等预训练模型
 # torch: PyTorch深度学习框架
 # datasets: Hugging Face的数据集处理库
